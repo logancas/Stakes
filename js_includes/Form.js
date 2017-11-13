@@ -101,7 +101,7 @@ jqueryWidget: {
                 }
 
                 if (!any_checked) {
-                    alertOrAddError(check.attr('name'), t.obligatoryCheckboxErrorGenerator('a'));
+                    alertOrAddError(check.attr('name'), 'You must check at least one checkbox to continue.');
                     return;
                 }
 
