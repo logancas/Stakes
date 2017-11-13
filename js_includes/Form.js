@@ -101,7 +101,7 @@ jqueryWidget: {
                 }
 
                 if (!any_checked) {
-                    allertOrAddError(check.attr('name'), t.obligatoryCheckboxErrorGenerator(check.attr('name')));
+                    alertOrAddError(check.attr('name'), t.obligatoryCheckboxErrorGenerator(check.attr('name')));
                     return;
                 }
 
