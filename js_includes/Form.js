@@ -82,17 +82,27 @@ jqueryWidget: {
                 }
 
                 var checks = $(dom).find("input[type=checkbox]");
+                var any_checked = false;
                 for (var i = 0; i < checks.length; ++i) {
                     var check = $(checks[i]);
  
                     // Checkboxes with the 'obligatory' class must be checked.
-                    if (! check.attr('checked') && check.hasClass('obligatory')) {
-                        alertOrAddError(check.attr('name'), t.obligatoryCheckboxErrorGenerator(check.attr('name')));
-                        return;
+                    // if (! check.attr('checked') && check.hasClass('obligatory')) {
+                    //     alertOrAddError(check.attr('name'), t.obligatoryCheckboxErrorGenerator(check.attr('name')));
+                    //     return;
+                    // }
+                    if (check.attr('checked')) {
+                        any_checked = true;
                     }
+
 
                     rlines.push([["Field name", check.attr('name')],
                                  ["Field value", check.attr('checked') ? t.checkedValue : t.uncheckedValue]]);
+                }
+
+                if (!any_checked) {
+                    allertOrAddError(check.attr('name'), t.obligatoryCheckboxErrorGenerator(check.attr('name')));
+                    return;
                 }
 
                 var rads = $(dom).find("input[type=radio]");
